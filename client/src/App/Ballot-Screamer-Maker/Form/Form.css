@@ -1,0 +1,65 @@
+/* FORM -- COMPONENT */
+/* ============================== */
+form {
+    overflow-x: scroll;
+}
+
+form > div {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+form > button {
+    background-color: gold;
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 1em;
+    height: 70px;
+    width: 400px;
+}
+
+.form-wrapper {
+    border-bottom: 3px solid black;
+}
+
+.form-radio {
+    display: flex;
+    flex-direction: column;
+    min-width: 60px;
+    width: 60px;
+}
+
+.form-radio > input {
+    margin-left: 5px;
+}
+
+.form-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: .8em;
+    min-width: 60px;
+    width: 60px;
+}
+
+.form-title-wrapper {
+    left: 200px;
+    position: relative;
+}
+
+.form-question-title{
+    min-width: 200px;
+    width: 200px;
+}
+
+@media (min-width: 700px) {
+    .form-title {
+        font-size: 1em;
+        width: 150px;
+    }
+    .form-radio {
+        width: 150px;
+    }
+}
+

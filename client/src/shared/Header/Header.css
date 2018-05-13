@@ -1,0 +1,15 @@
+/* HEADER -- CSS */
+/* ============================== */
+
+header {
+    align-items: center;
+    background-image: url(http://www.powerpointhintergrund.com/uploads/shiny-gold-background-photo-29.jpeg);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+header > h1 {
+    display: flex;
+    font-size: 3em;
+}

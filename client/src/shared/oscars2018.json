@@ -1,0 +1,214 @@
+{      
+    "awards_show_name": "Academy Awards",
+    "awards_show_year": "2018",
+    "categories": [
+        {
+            "award_name": "Best Picture",
+            "order_number": "1",
+            "nominees": [
+                {
+                    "film_name": "Call Me by Your Name",
+                    "recipient": "Peter Spears, Luca Guadagnino, Emilie Georges, and Marco Morabito",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/tcNniniS4rfqrLH0oORikJfnIwY.jpg"
+                },
+                {
+                    "film_name": "Darkest Hour",
+                    "recipient": "Tim Bevan, Eric Fellner, Lisa Bruce, Anthony McCarten, and Douglas Urbanski",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/67fPL6ZaiOeM4hYqpxqV9Py8psJ.jpg"
+                },
+                {
+                    "film_name": "Dunkirk",
+                    "recipient": "Emma Thomas and Christopher Nolan",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg"
+                },
+                {
+                    "film_name": "Get Out",
+                    "recipient": "Sean McKittrick, Jason Blum, Edward H. Hamm Jr., and Jordan Peele",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/1SwAVYpuLj8KsHxllTF8Dt9dSSX.jpg"
+                },
+                {
+                    "film_name": "Lady Bird",
+                    "recipient": "Scott Rudin, Eli Bush, and Evelyn O'Neill",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iySFtKLrWvVzXzlFj7x1zalxi5G.jpg"
+                },
+                {
+                    "film_name": "Phantom Thread",
+                    "recipient": "JoAnne Sellar, Paul Thomas Anderson, Megan Ellison and Daniel Lupi",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/yZ8j8xKk2xQ1d88hB8YG6LZfRQj.jpg"
+                },
+                {
+                    "film_name": "The Post",
+                    "recipient": "Amy Pascal, Steven Spielberg, and Kristie Macosko Krieger",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/qyRwj5VvuTRdJ76o2grP93grNxt.jpg"
+                },
+                {
+                    "film_name": "The Shape of Water",
+                    "recipient": "Guillermo del Toro and J. Miles Dale",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iLYLADGA5oKGM92Ns1j9CDgk3iI.jpg"
+                },
+                {
+                    "film_name": "Three Billboards Outside Ebbing Missouri",
+                    "recipient": "Graham Broadbent, Pete Czernin, and Martin McDonagh",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/vgvw6w1CtcFkuXXn004S5wQsHRl.jpg"
+                }      
+            ]
+        },
+        {
+            "award_name": "Best Director",
+            "order_number": "2",
+            "nominees": [
+                {
+                    "film_name": "Dunkirk",
+                    "recipient": "Christpher Nolan",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/ebSnODDg9lbsMIaWg2uAbjn7TO5.jpg"
+                },
+                {
+                    "film_name": "Get Out",
+                    "recipient": "Jordan Peele",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/1SwAVYpuLj8KsHxllTF8Dt9dSSX.jpg"
+                },
+                {
+                    "film_name": "Lady Bird",
+                    "recipient": "Greta Gerwig",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iySFtKLrWvVzXzlFj7x1zalxi5G.jpg"
+                },
+                {
+                    "film_name": "Phantom Thread",
+                    "recipient": "Paul Thomas Anderson",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/yZ8j8xKk2xQ1d88hB8YG6LZfRQj.jpg"
+                },
+                {
+                    "film_name": "The Shape of Water",
+                    "recipient": "Guillermo del Toro",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iLYLADGA5oKGM92Ns1j9CDgk3iI.jpg"
+                }
+
+            ]
+            
+        },
+        {
+            "award_name": "Best Actor In a Lead Role",
+            "order_number": "3",
+            "nominees": [
+                {
+                    "film_name": "Call Me By Your Name",
+                    "recipient": "Timothee Chalamet",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/tcNniniS4rfqrLH0oORikJfnIwY.jpg"
+                },
+                {
+                    "film_name": "Phantom Thread",
+                    "recipient": "Daniel Day Lewis",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/yZ8j8xKk2xQ1d88hB8YG6LZfRQj.jpg"
+                },
+                {
+                    "film_name": "Get Out",
+                    "recipient": "Daniel Kaluuya",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/1SwAVYpuLj8KsHxllTF8Dt9dSSX.jpg"
+                },
+                {
+                    "film_name": "Darkest Hour",
+                    "recipient": "Gary Oldman",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/67fPL6ZaiOeM4hYqpxqV9Py8psJ.jpg"
+                },
+                {
+                    "film_name": "Roman J. Isreal, Esq.",
+                    "recipient": "Denzel Washionton",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/8e5IGlLrVjwrlDcRtzSQkXhJFWl.jpg"
+                }
+            ]
+        },
+        {
+            "award_name": "Best Actress In a Lead Role",
+            "order_number": "4",
+            "nominees": [
+                {
+                    "film_name": "The Shape of Water",
+                    "recipient": "Sally Hawkins",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iLYLADGA5oKGM92Ns1j9CDgk3iI.jpg"
+                },
+                {
+                    "film_name": "Three Billboards Outside Ebbing Missouri",
+                    "recipient": "Frances McDormand",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/vgvw6w1CtcFkuXXn004S5wQsHRl.jpg"
+                },
+                {
+                    "film_name": "I, Tonya",
+                    "recipient": "Margot Robbie",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/6gNXwSHxaksR1PjVZRqNapmkgj3.jpg"
+                },
+                {
+                    "film_name": "Lady Bird",
+                    "recipient": "Saorise Ronan",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iySFtKLrWvVzXzlFj7x1zalxi5G.jpg"
+                },
+                {
+                    "film_name": "The Post",
+                    "recipient": "Meryl Streep",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/qyRwj5VvuTRdJ76o2grP93grNxt.jpg"
+                }
+            ]
+        },
+        {
+            "award_name": "Best Actor In a Supporting Role",
+            "order_number": "5",
+            "nominees": [
+                {
+                    "film_name": "The Florida Project",
+                    "recipient": "Willem Dafoe",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/bnSTP1PY2fDyat0eUa4QouuGV7F.jpg"
+                },
+                {
+                    "film_name": "Three Billboards Outside Ebbing Missouri",
+                    "recipient": "Woody Harrelson",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/vgvw6w1CtcFkuXXn004S5wQsHRl.jpg"
+                },
+                {
+                    "film_name": "The Shape of Water",
+                    "recipient": "Richard Jenkins",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iLYLADGA5oKGM92Ns1j9CDgk3iI.jpg"
+                },
+                {
+                    "film_name": "All the Money In The World",
+                    "recipient": "Christopher Plummer",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/8oWOde1s6jPcbcoZK6JWHxYzOsP.jpg"
+                },
+                {
+                    "film_name": "Three Billboards Outside Ebbing Missouri",
+                    "recipient": "Sam Rockwell",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/vgvw6w1CtcFkuXXn004S5wQsHRl.jpg"
+                }
+            ]
+        },
+        {
+            "award_name": "Best Actress In a Supporting Role",
+            "order_number": "6",
+            "nominees": [
+                {
+                    "film_name": "Mudbound",
+                    "recipient": "Mary J. Blige",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/7cL7UgVMeP9xDSxU2NyAqeAQAbt.jpg"
+                },
+                {
+                    "film_name": "I, Tonya",
+                    "recipient": "Allison Janney",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/6gNXwSHxaksR1PjVZRqNapmkgj3.jpg"
+                },
+                {
+                    "film_name": "Phantom Thread",
+                    "recipient": "Lesley Manville",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/yZ8j8xKk2xQ1d88hB8YG6LZfRQj.jpg"
+                },
+                {
+                    "film_name": "Lady Bird",
+                    "recipient": "Laurie Metcalf",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iySFtKLrWvVzXzlFj7x1zalxi5G.jpg"
+                },
+                {
+                    "film_name": "The Shape of Water",
+                    "recipient": "Octavia Spencer",
+                    "imgUrl": "https://image.tmdb.org/t/p/w1280/iLYLADGA5oKGM92Ns1j9CDgk3iI.jpg"
+                }
+            ]
+        }
+    ]
+}

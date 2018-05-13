@@ -1,0 +1,18 @@
+/* BALLOT DISPLAY -- CSS */
+/* ============================== */
+
+.ballot-display {
+    width: 600px;
+}
+
+.ballot-display-category {
+    margin: 10px;
+}
+
+.ballot-display-bold {
+    font-weight: bold;
+}
+
+.ballot-display-italics {
+    font-style: italic;
+}

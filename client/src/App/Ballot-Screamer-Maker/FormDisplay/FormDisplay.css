@@ -1,0 +1,35 @@
+/* FORM DISPLAY -- CSS */
+/* ============================== */
+
+.form-display {
+    border-bottom: 5px black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-display-container {
+    background-color: silver;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 600px;
+}
+
+.form-display > button {
+    border-radius: 25px;
+    background-color: silver;
+    font-size: 2em;
+    margin-left: 10px;
+    margin-right: 10px; 
+    height: 100px;
+    width: 100px;
+}
+
+.pseudo-button {
+    clear: both;
+    height: 100px;
+    width: 100px;
+}

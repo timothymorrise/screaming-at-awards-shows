@@ -1,0 +1,21 @@
+/* NAVBAR -- CSS */
+/* ============================== */
+
+.nav-wrapper {
+    background-color: darkgray;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+}
+
+nav > a {
+    color: white;
+    text-decoration: none;
+}

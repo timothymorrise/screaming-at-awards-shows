@@ -1,0 +1,15 @@
+/* Ballot Screamer Maker -- CSS */
+/* ============================== */
+
+.ballot-screamer-form-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.ballot-screamer > h1 {
+    margin-left: 140px;
+}
+
+.ballot-screamer > div {
+    margin-left: 15px;
+}

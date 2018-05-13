@@ -1,0 +1,10 @@
+/* HOME -- CSS */
+/* ============================== */
+
+.home {
+    margin: 20px;
+}
+
+.home > h2 {
+    margin-bottom: 10px;
+}
