@@ -24,13 +24,31 @@ export const signup = userInfo => {
     }
 }
 
-export const authenticate = user => {type: "AUTHENTICATE", user}
-
 export const login = credentials => {
     return dispatch => {
-        axios.post()
+        axios.post(loginUrl, credentials)
+        .then(response => {
+            const {token, user} = response.data;
+            localStorage.token = token
+            localStorage.user = JSON.stringify(user);
+            dispatch(authenticate(user));
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     }
 }
+
+export const authenticate = user => {type: "AUTHENTICATE", user}
+
+export const logout = () => {
+    delete localStorage.token;
+    delete localStorage.user;
+    return {
+        type: "LOGOUT"
+    }
+}
+
 
 // REDUCERS
 const initialState = {
@@ -46,7 +64,9 @@ const user = (state = initialState, action) => {
                 ...state,
                 ...action.user,
                 isAuthenticated: true 
-            }
+            };
+        case "LOGOUT":
+            return initialState;
         
         default: 
             return state

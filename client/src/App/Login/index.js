@@ -3,7 +3,11 @@
 
 // IMPORT FROM PACKAGES
 import React, { Component } from 'react'
+import {connect} from "react-redux";
+
 // IMPORT FROM FILES
+import {login} from "../../redux/reducers"
+
 
 // CONSTRUCTOR
  class Login extends Component {
@@ -43,7 +47,7 @@ import React, { Component } from 'react'
 
     handleSubmit(e) {
         e.preventDefault();
-        // ACTION CREATOR 
+        this.props.login(this.state.inputs)
         this.clearInputs();
     }
 
@@ -64,6 +68,8 @@ import React, { Component } from 'react'
                 <button type="submit">Submit</button>
         </form>
     }
+
+
 }
 
-export default Login
+export default connect(null, {connect})(Login)

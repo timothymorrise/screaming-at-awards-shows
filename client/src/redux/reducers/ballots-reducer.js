@@ -140,6 +140,13 @@ const ballots = (prevData = { loadingMany: true, loadingSingle: true, data: [], 
                     }
                 })
             }
+        case "LOGOUT":
+            return {
+                loadingMany: true, 
+                loadingSingle: true,
+                data: [],
+                currentBallot: {}
+            }
         default:
             return prevData
     }
