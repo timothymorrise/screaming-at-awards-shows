@@ -11,7 +11,7 @@ const loginUrl = "/auth/signup"
 // ACTION CREATORS
 export const signup = userInfo => {
     return dispatch => {
-        axios.post(authUrl, userInfo)
+        axios.post(signupUrl, userInfo)
         .then(response => {
             const {token, user} = response.data
             localStorage.token = token;
@@ -73,3 +73,6 @@ const user = (state = initialState, action) => {
     }
 } 
 
+//EXPORTS
+
+export default user

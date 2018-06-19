@@ -14,7 +14,7 @@ import "./Navbar.css"
 class Navbar extends Component {
     constructor(props) {
         super(props)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        // this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     render() {
@@ -31,4 +31,4 @@ class Navbar extends Component {
     }
 }
 
-export default componentName
+export default Navbar
