@@ -6,7 +6,7 @@ const axios = require("axios");
 
 // VARIABLES
 const signupUrl = "/auth/signup"
-const loginUrl = "/auth/signup"
+const loginUrl = "/auth/login"
 
 // ACTION CREATORS
 export const signup = userInfo => {
@@ -39,7 +39,11 @@ export const login = credentials => {
     }
 }
 
-export const authenticate = user => {type: "AUTHENTICATE", user}
+export const authenticate = user => {
+    return {
+        type: "AUTHENTICATE", 
+        user}
+}
 
 export const logout = () => {
     delete localStorage.token;
@@ -60,15 +64,16 @@ const initialState = {
 const user = (state = initialState, action) => {
     switch(action.type) {
         case "AUTHENTICATE":
+            console.log(action.user)
             return  {
                 ...state,
                 ...action.user,
+                
                 isAuthenticated: true 
             };
         case "LOGOUT":
             return initialState;
-        
-        default: 
+        default:
             return state
     }
 } 

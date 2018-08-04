@@ -6,10 +6,9 @@ import React, { Component } from 'react'
 import {connect} from "react-redux";
 
 // IMPORT FROM FILES
-import {login} from "../../redux/reducers"
+import {login} from "../../redux/reducers/auth-reducer"
 
-
-// CONSTRUCTOR
+// COMPONENT FUNCTION
  class Login extends Component {
     constructor(props) {
         super(props);
@@ -72,4 +71,4 @@ import {login} from "../../redux/reducers"
 
 }
 
-export default connect(null, {connect})(Login)
+export default connect(null, {connect, login})(Login)

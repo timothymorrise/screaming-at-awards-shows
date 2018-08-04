@@ -1,23 +1,33 @@
 // BALLOTS REDUCER
 // ==============================
 
-/////////////////////
-// ACTION CREATORS //
-/////////////////////
-
 // IMPORT FROM PACKAGES
 const axios = require("axios");
 
 // VARIABLES
-const getBallotsUrl = "/ballots?awards_id=";
-const getBallotUrl = "/ballots?category_id=";
-const ballotsUrl = "/ballots/";
+const getBallotsUrl = "/api/ballots?awards_id=";
+const getBallotUrl = "/api/ballots?category_id=";
+const ballotsUrl = "/api/ballots/";
+
+// MIDDLEWARE
+let ballotsAxios = axios.create();
+
+// APPLY MIDDLEWARE
+ballotsAxios.interceptors.request.use(((config) => {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`
+    return config;
+})) 
+
+/////////////////////
+// ACTION CREATORS //
+/////////////////////
 
 // GET BALLOTS
-export const getBallots = (awardId) => {
+export const getBallots = (awardId, user) => {
     return dispatch => {
         dispatch({ type: "RESET_LOADING_BALLOTS" })
-        axios.get(getBallotsUrl + awardId)
+        ballotsAxios.get(getBallotsUrl + awardId, user)
             .then(response => {
                 dispatch(
                     {
@@ -33,10 +43,10 @@ export const getBallots = (awardId) => {
 }
 
 // GET BALLOT
-export const getBallot = (categoryId) => {
+export const getBallot = (categoryId, user) => {
     return dispatch => {
         dispatch({ type: "RESET_LOADING_BALLOT" });
-        axios.get(getBallotUrl + categoryId)
+        ballotsAxios.get(getBallotUrl + categoryId, user)
             .then(response => {
                 let data = response.data[0]
                 if (data === undefined) {
@@ -58,7 +68,7 @@ export const getBallot = (categoryId) => {
 // POST BALLOT
 export const postBallot = (ballot) => {
     return dispatch => {
-        axios.post(ballotsUrl, ballot)
+        ballotsAxios.post(ballotsUrl, ballot)
             .then((response) => {
                 dispatch(
                     {
@@ -76,7 +86,7 @@ export const postBallot = (ballot) => {
 // PUT BALLOT
 export const updateBallot = (ballot, id) => {
     return dispatch => {
-        axios.put(ballotsUrl + id, ballot)
+        ballotsAxios.put(ballotsUrl + id, ballot)
             .then((response) => {
                 dispatch({
                     type: "UPDATE_BALLOT",

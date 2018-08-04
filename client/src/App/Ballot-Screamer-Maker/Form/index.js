@@ -25,9 +25,9 @@ class Form extends Component {
     }
 
     componentDidMount() {
-        let { categoryId } = this.props
+        let { categoryId, user } = this.props
         this.props.getSomeNominees(categoryId)
-        this.props.getBallot(categoryId)
+        this.props.getBallot(categoryId, user)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -131,7 +131,8 @@ const mapStateToProps = (state) => {
     return {
         nominees: state.nominees.ballotData,
         ballot: state.ballots.currentBallot,
-        loading: state.ballots.loadingSingle
+        loading: state.ballots.loadingSingle,
+        user: state.user
     }
 }
 

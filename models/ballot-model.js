@@ -27,12 +27,12 @@ const ballotSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "Nominee"
         }
-        // ,
-        // user: {
-        //     type: Schema.Types.ObjectId,
-        //     ref: "User",
-        //     required: true
-        // }
+        ,
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true
+        }
     }, { timestamps: { createdAt: 'created_at' } }
 )
 

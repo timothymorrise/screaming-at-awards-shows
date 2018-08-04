@@ -3,12 +3,14 @@
 
 // IMPORT FROM PACKAGES
 import React, { Component } from "react"
-import {connect} from "react-redux";
-import {signup} from "../../redux/reducers/auth-reducer"
+import { connect } from "react-redux";
+
+
 // IMPORT FROM FILES
+import { signup } from "../../../redux/reducers/auth-reducer"
 
 // CONSTRUCTOR
-class SignUpForm extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,37 +49,41 @@ class SignUpForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.signup(this.state.inputs) 
+        console.log(this.state)
+        this.props.signup(this.state.inputs)
         this.clearInputs();
     }
 
 
     render() {
-        return <form onSubmit={this.handleSubmit}>
-                <h3>Signup</h3>
-                <input name="name"
-                        onChange={this.handleChange}
-                        value={this.name}
-                        type="text"
-                        placeholder="Name"/>
-                <input name="username"
-                        onChange={this.handleChange}
-                        value={this.username}
-                        type="text"
-                        placeholder="Username"/>
-                <input name="password"
-                        onChange={this.handleChange}
-                        value={this.password}
-                        type="text"
-                        placeholder="Password"/>
-                <button type="submit">Create Account</button>
-        </form>
+        return (
+            <form onSubmit = {this.handleSubmit}>
+            <h3>Signup</h3>
+            <input name="name"
+                onChange={this.handleChange}
+                value={this.name}
+                type="text"
+                placeholder="Name" />
+            <input name="username"
+                onChange={this.handleChange}
+                value={this.username}
+                type="text"
+                placeholder="Username" />
+            <input name="password"
+                onChange={this.handleChange}
+                value={this.password}
+                type="text"
+                placeholder="Password" />
+            <button type="submit">Create Account</button>
+            </form>
+        )
     }
 }
+
 
 // EXPORTS
 const mapStateToProps = () => {
 
 }
 
-export default connect(null, {signup})(Signup)
+export default connect(null, { signup })(SignUp)

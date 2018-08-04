@@ -14,16 +14,16 @@ import { getBallots } from "../../../redux/reducers/ballots-reducer"
 class BallotDisplay extends Component {
 
     componentDidMount() {
-        let { awardId } = this.props
+        let { awardId, user } = this.props
         this.props.getNominees();
-        this.props.getBallots(awardId);
+        this.props.getBallots(awardId, user);
     }
 
     componentWillReceiveProps(nextProps) {
-        let { awardId } = this.props;
+        let { awardId, user } = this.props;
         let nextId = nextProps.awardId;
         if (awardId !== nextId) {
-            this.props.getBallots(nextId);
+            this.props.getBallots(nextId, user);
         }
     }
 
@@ -104,7 +104,8 @@ const mapStateToProps = (state) => {
         nomineeSomeLoading: state.nominees.someLoading,
         nomineeLoading: state.nominees.loading,
         ballots: state.ballots.data,
-        ballotLoading: state.ballots.loadingMany
+        ballotLoading: state.ballots.loadingMany, 
+        user: state.user
     }
 }
 

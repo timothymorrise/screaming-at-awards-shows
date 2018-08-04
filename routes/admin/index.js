@@ -18,5 +18,4 @@ adminRouter.use("/nominees", nomineesRouter);
 // EXPORT
 module.exports = adminRouter
 
-// need to go over different properties of req and 
     

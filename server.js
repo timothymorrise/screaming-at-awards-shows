@@ -30,7 +30,6 @@ app.use("/admin", adminRouter);
 app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
-app.use("/ballots", ballotRouter)
 
 // LISTENING ON PORT
 app.listen(8080, () => {

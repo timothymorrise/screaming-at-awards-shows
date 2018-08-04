@@ -39,6 +39,7 @@ authRouter.post("/signup", (req, res) => {
         }
         // If the function reaches this point and hasn't returned already, we're safe
         // to create the new user in the database.
+        console.log("body", req.body)
         const newUser = new User(req.body);
         console.log(newUser)
         newUser.save((err, user) => {
