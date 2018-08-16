@@ -1,7 +1,7 @@
 /* NAVBAR -- CSS */
 /* ============================== */
 
-.nav-wrapper {
+.navbar-wrapper {
     background-color: darkgray;
     display: flex;
     justify-content: center;

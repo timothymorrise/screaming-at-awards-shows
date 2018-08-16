@@ -8,7 +8,10 @@ const axios = require("axios");
 const signupUrl = "/auth/signup"
 const loginUrl = "/auth/login"
 
-// ACTION CREATORS
+/////////////////////
+// ACTION CREATORS //
+/////////////////////
+
 export const signup = userInfo => {
     return dispatch => {
         axios.post(signupUrl, userInfo)
@@ -20,6 +23,7 @@ export const signup = userInfo => {
         })
         .catch(err => {
             console.error(err)
+            dispatch(authError("signup", err.response.status))
         })
     }
 }
@@ -35,6 +39,7 @@ export const login = credentials => {
         })
         .catch((err) => {
             console.error(err);
+            dispatch(authError("login", err.response.status))
         });
     }
 }
@@ -53,26 +58,50 @@ export const logout = () => {
     }
 }
 
+export const authError = (key, errCode) => {
+    return {
+        type: "AUTH_ERROR",
+        key, 
+        errCode
+    }
+}
 
-// REDUCERS
+/////////////
+// REDUCER //
+/////////////
+
 const initialState = {
-    username: "",
-    isAdmin: false,
+    user: {
+        username: "",
+        admin: false,
+        _id: ""
+    },
+    authErrCode: {
+        signup: "",
+        login: ""
+    },
     isAuthenticated: false
 }
 
-const user = (state = initialState, action) => {
+const auth = (state = initialState, action) => {
     switch(action.type) {
         case "AUTHENTICATE":
-            console.log(action.user)
             return  {
                 ...state,
-                ...action.user,
-                
-                isAuthenticated: true 
+                user: action.user,
+                isAuthenticated: true,
+                authErrCode: initialState.authErrCode
             };
         case "LOGOUT":
             return initialState;
+        case "AUTH_ERROR":
+            return {
+                ...state,
+                authErrCode: {
+                    ...state.authErrCode,
+                    [action.key]: action.errCode
+                }
+            };
         default:
             return state
     }
@@ -80,4 +109,4 @@ const user = (state = initialState, action) => {
 
 //EXPORTS
 
-export default user
+export default auth

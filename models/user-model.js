@@ -3,10 +3,7 @@
 
 // IMPORT FROM PACKAGES
 const mongoose = require("mongoose");  
-// const bcrypt = require("bcrypt")
-
-// VARIABLES
-// const salt = bcrypt.genSaltSync(10);
+const bcrypt = require("bcrypt")
 
 // SCHEMA
 const userSchema = new mongoose.Schema({  
@@ -28,21 +25,29 @@ const userSchema = new mongoose.Schema({
 });
 
 // MIDDLEWARE/METHODS
-// userSchema.pre("save", next => {
-//     this.password = bcrypt.hashSync(this.password, salt)
-//     next();
-// })
+userSchema.methods.checkPassword = (user, passwordPlainTxt, callback) => {
+    console.log("in the check password method:", user, passwordPlainTxt, user.password)
+    bcrypt.compare(passwordPlainTxt, user.password, (err, isMatch) => {
+        if (err) return callback(err);
+        callback(null, isMatch);
+    });
+};
 
-// userSchema.methods.auth = (passwordAttempt, cb) => {
-//     bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
-//         if(err) {
-//             console.log(err)
-//             cb(false)
-//         } else {
-//             cb(isMatch)
-//         }
-//     })
-// }
+userSchema.pre("save", function (next) {
+    let user = this;
+    if (!user.isModified("password")) return next();
+    bcrypt.hash(user.password, 10, (err, hash) => {
+        if (err) return next(err);
+        user.password = hash;
+        next();
+    });
+})
+
+userSchema.methods.withoutPassword = function () {  
+    const user = this.toObject();
+    delete user.password;
+    return user;
+};
 
 // EXPORTS
 module.exports = mongoose.model("User", userSchema);

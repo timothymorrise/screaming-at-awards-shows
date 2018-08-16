@@ -3,13 +3,14 @@
 
 // IMPORT FROM PACKAGES
 import React, { Component } from 'react'
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 // IMPORT FROM FILES
-import {login} from "../../redux/reducers/auth-reducer"
+import LoginForm from "./LoginForm"
+import { login } from "../../redux/reducers/auth-reducer"
 
 // COMPONENT FUNCTION
- class Login extends Component {
+class LoginFormContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,12 +19,10 @@ import {login} from "../../redux/reducers/auth-reducer"
                 password: ""
             }
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.clearInputs = this.clearInputs.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(e) {
+        e.persist()
         let { name, value } = e.target
         this.setState(prevState => {
             return {
@@ -52,23 +51,28 @@ import {login} from "../../redux/reducers/auth-reducer"
 
 
     render() {
-        return <form onSubmit={this.handleSubmit}>
-                <h3>Log In</h3>
-                <input name="username"
-                        onChange={this.handleChange}
-                        value={this.username}
-                        type="text"
-                        placeholder="Username"/>
-                <input name="password"
-                        onChange={this.handleChange}
-                        value={this.password}
-                        type="text"
-                        placeholder="Password"/>
-                <button type="submit">Submit</button>
-        </form>
+        let { authErrCode } = this.props;
+        let errMsg = "";
+        if (authErrCode < 500 && authErrCode > 399) {
+            errMsg = "Invalid username or password!";
+        } else if (authErrCode > 499) {
+            errMsg = "Server error!";
+        }
+        return (
+            <LoginForm
+                handleChange={this.handleChange.bind(this)}
+                handleSubmit={this.handleSubmit.bind(this)}
+                errMsg={errMsg}
+                {...this.state.inputs} />
+        )
     }
-
-
 }
 
-export default connect(null, {connect, login})(Login)
+
+const mapStateToProps = (state) => {
+    return {
+        authErrCode: state.auth.authErrCode.login
+    }
+}
+
+export default connect(mapStateToProps, { connect, login })(LoginFormContainer)

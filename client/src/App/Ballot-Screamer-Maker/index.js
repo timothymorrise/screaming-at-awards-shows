@@ -50,7 +50,7 @@ class BallotScreamer extends Component {
         return (
             categoryLoading ?
                 <div>
-                    I'M HURTING LINDA
+                    LOADING...
                 </div>
                 :
                 <div className="ballot-screamer">

@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 
 
 // IMPORT FROM FILES
+import SignupForm from "./SignUpForm"
 import { signup } from "../../../redux/reducers/auth-reducer"
 
 // CONSTRUCTOR
@@ -20,9 +21,6 @@ class SignUp extends Component {
                 password: ""
             }
         }
-        this.handleChange = this.handleChange.bind(this)
-        this.clearInputs = this.clearInputs.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange(e) {
@@ -49,41 +47,36 @@ class SignUp extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.state)
         this.props.signup(this.state.inputs)
         this.clearInputs();
     }
 
 
     render() {
+        let { authErrCode } = this.props;
+        let errMsg = "";
+        if (authErrCode < 500 && authErrCode > 399) {
+            errMsg = "Invalid username or password!";
+        } else if (authErrCode > 499) {
+            errMsg = "Server error!";
+        }
         return (
-            <form onSubmit = {this.handleSubmit}>
-            <h3>Signup</h3>
-            <input name="name"
-                onChange={this.handleChange}
-                value={this.name}
-                type="text"
-                placeholder="Name" />
-            <input name="username"
-                onChange={this.handleChange}
-                value={this.username}
-                type="text"
-                placeholder="Username" />
-            <input name="password"
-                onChange={this.handleChange}
-                value={this.password}
-                type="text"
-                placeholder="Password" />
-            <button type="submit">Create Account</button>
-            </form>
+            <SignupForm
+                handleChange={this.handleChange.bind(this)}
+                handleSubmit={this.handleSubmit.bind(this)}
+                errMsg={errMsg}
+                {...this.state.inputs}
+            />
         )
     }
 }
 
 
 // EXPORTS
-const mapStateToProps = () => {
-
+const mapStateToProps = (state) => {
+    return {
+        authErrCode: state.auth.authErrCode.signup
+    }
 }
 
-export default connect(null, { signup })(SignUp)
+export default connect(mapStateToProps, { signup })(SignUp)

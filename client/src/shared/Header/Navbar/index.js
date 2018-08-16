@@ -4,7 +4,7 @@
 // IMPORT FROM PACKAGES
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 
 
 // IMPORT FROM FILES
@@ -18,17 +18,26 @@ class Navbar extends Component {
     }
 
     render() {
+        const { isAuthenticated } = this.props
         return (
-            <div className="nav-wrapper">
+            <div className="navbar-wrapper">
                 <nav>
-                    <div className="nav-link"><Link to="/home">Home</Link></div>
+                    {!isAuthenticated && <div className="nav-link"><Link to="/">Sign Up</Link></div>}
+                    {!isAuthenticated && <div className="nav-link"><Link to="/login">Log In</Link></div>}
+                    {isAuthenticated && <div className="nav-link"><Link to="/home">Home</Link></div>}
                     <div className="nav-link"><Link to="/about">About</Link></div>
-                    <div className="nav-link"><Link to="/contact">Contact</Link></div>
-                    <div className="nav-link"><button onClick={this.props.logout}> Logout </button></div>
+                    {isAuthenticated && <div className="nav-link"><button onClick={this.props.logout}> Logout </button></div>}
                 </nav>
             </div>
         )
     }
 }
 
-export default connect(null, {logout})(Navbar)
+//EXPORTS
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default connect(mapStateToProps, { logout })(Navbar)

@@ -3,25 +3,27 @@
 
 // IMPORT FROM PACKAGES
 import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { connect } from "react-redux"
 
 // IMPORT FROM FILES -- COMPONENTS/CSS
 import Landing from "./Landing";
 import Login from "./Login"
 import Home from "./Home";
 import About from "./About";
-import Contact from "./Contact";
 import Header from "../shared/Header";
 import Sidebar from "../shared/Sidebar";
 import Footer from "../shared/Footer";
 import BallotScreamer from "./Ballot-Screamer-Maker";
+import ProtectedRoute from "../shared/ProtectedRoute"
 import "./App.css";
 
 // CONSTRUCTOR
-export default class App extends Component {
+class App extends Component {
     render() {
+        const { isAuthenticated } = this.props
         const generateSidebar = () => {
-            if (localStorage.token) {
+            if (isAuthenticated) {
                 return <Sidebar/>
             }
             return null
@@ -33,13 +35,17 @@ export default class App extends Component {
                     {generateSidebar()}
                     <div>
                         <Switch >
-                            <Route exact path="/" component={Landing}/>
-                            <Route path="/login" component={Login}/>
-                            <Route path="/home" component={Home} />
+                        <Route exact path="/" render={ props => isAuthenticated ? 
+                        <Redirect to="/home"/> :
+                        <Landing {...props}/>
+                    }/>
+                    <Route path="/login" render={ props => isAuthenticated ?
+                        <Redirect to="/home"/> :
+                        <Login {...props}/>
+                    } />
                             <Route path="/about" component={About} />
-                            <Route path="/contact" component={Contact} />
-                            {/* USER PAGE */}
-                            <Route path="/awards/:award_id/:category_num" component={BallotScreamer} />
+                            <ProtectedRoute path="/home" component={Home} />
+                            <ProtectedRoute path="/awards/:award_id/:category_num" component={BallotScreamer} />
                         </Switch>
                     </div>
                 </main>
@@ -48,9 +54,16 @@ export default class App extends Component {
         )
     }
 }
+// EXPORTS
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(App))
 
 // GRAVY
-// user auth
 // restructure data to include award ids on nominees
 // allow for restrictive use of paths 
 // shore up security on server end
