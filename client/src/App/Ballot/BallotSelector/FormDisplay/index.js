@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 // IMPORT FROM FILES -- COMPONENTS
 import "./FormDisplay.css"
 import DisplayCard from "./DisplayCard"
-import { getSomeNominees } from "../../../redux/reducers/nominees-reducer"
+import { getSomeNominees } from "../../../../redux/reducers/nominees-reducer"
 
 class FormDisplay extends Component {
     constructor(props) {

@@ -15,6 +15,7 @@ const authRouter = require("./routes/auth-route.js");
 const adminRouter = require("./routes/admin/index.js");
 const publicRouter = require("./routes/public/index.js");
 const ballotRouter = require("./routes/ballot-route.js");
+const profileRouter = require("./routes/profile-route");
 
 
 // CONNECT TO DATABASE
@@ -30,6 +31,7 @@ app.use("/admin", adminRouter);
 app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
+app.use("/api/profile", profileRouter)
 
 // LISTENING ON PORT
 app.listen(8080, () => {

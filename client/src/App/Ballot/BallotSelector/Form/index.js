@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 
 // IMPORT FROM FILES -- CSS // REDUCER
 import "./Form.css"
-import { getSomeNominees } from "../../../redux/reducers/nominees-reducer"
-import { getBallot, postBallot, updateBallot } from "../../../redux/reducers/ballots-reducer"
+import { getSomeNominees } from "../../../../redux/reducers/nominees-reducer"
+import { getBallot, postBallot, updateBallot } from "../../../../redux/reducers/ballots-reducer"
 
 // CONSTRUCTOR
 class Form extends Component {
@@ -38,6 +38,7 @@ class Form extends Component {
             this.props.getBallot(nextId)
         }
         if (this.props.ballot !== null) {
+            console.log("pulling from props")
             this.setState(
                 {
                     predicted: this.props.ballot.predicted,
@@ -96,8 +97,7 @@ class Form extends Component {
                     checked={this.state[questionValue] === _id} />
             </div>
         })
-        // console.log("ballot elements", this.props.ballot)
-        // console.log("state", this.state)
+        console.log(this.props.ballot)
         return (
             loading ?
             <div></div>

@@ -7,22 +7,15 @@ import { connect } from "react-redux";
 
 // IMPORT FROM FILES
 import "./BallotDisplay.css";
-import { getNominees } from "../../../redux/reducers/nominees-reducer"
-import { getBallots } from "../../../redux/reducers/ballots-reducer"
-
+import getBallots from "../../../redux/reducers/ballots-reducer";
 
 class BallotDisplay extends Component {
-
-    componentDidMount() {
-        let { awardId, user } = this.props
-        this.props.getNominees();
-        this.props.getBallots(awardId, user);
-    }
 
     componentWillReceiveProps(nextProps) {
         let { awardId, user } = this.props;
         let nextId = nextProps.awardId;
         if (awardId !== nextId) {
+            console.log(nextId, user)
             this.props.getBallots(nextId, user);
         }
     }
@@ -80,7 +73,7 @@ class BallotDisplay extends Component {
             })
         }
         return (
-            ( ballotLoading && nomineeSomeLoading && nomineeLoading && categoryLoading && awardsLoading ) ?
+            ( ballotLoading || nomineeSomeLoading || awardsLoading ) ?
             <div></div>
             :
             
@@ -105,8 +98,8 @@ const mapStateToProps = (state) => {
         nomineeLoading: state.nominees.loading,
         ballots: state.ballots.data,
         ballotLoading: state.ballots.loadingMany, 
-        user: state.user
+        user: state.auth.user
     }
 }
 
-export default connect(mapStateToProps, { getNominees, getBallots })(BallotDisplay);
+export default connect(mapStateToProps, {getBallots})(BallotDisplay);

@@ -9,6 +9,7 @@ const categoriesUrl = "/public/categories/?award_show_id="
 
 // ACTION CREATORS
 export let getCategories = (id) => {
+    console.log("gettingcategories")
     return dispatch => {
         dispatch({type: "RESET_LOADING_CATEGORY"})
         axios.get(categoriesUrl + id)

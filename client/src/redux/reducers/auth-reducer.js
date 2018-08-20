@@ -8,6 +8,17 @@ const axios = require("axios");
 const signupUrl = "/auth/signup"
 const loginUrl = "/auth/login"
 
+///////////
+// AXIOS //
+///////////
+
+const profileAxios = axios.create();
+profileAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
+
 /////////////////////
 // ACTION CREATORS //
 /////////////////////
@@ -41,6 +52,20 @@ export const login = credentials => {
             console.error(err);
             dispatch(authError("login", err.response.status))
         });
+    }
+}
+
+export const verify = () => {
+    return dispatch => {
+        console.log("is verifying")
+        profileAxios.get("/api/profile")
+        .then(response => {
+            let { user } = response.data;
+            dispatch(authenticate(user));
+        })
+        .catch(err => {
+            dispatch(authError("verify", err.response.status));
+        })
     }
 }
 
@@ -80,7 +105,8 @@ const initialState = {
         signup: "",
         login: ""
     },
-    isAuthenticated: false
+    isAuthenticated: false,
+    loading: true
 }
 
 const auth = (state = initialState, action) => {
@@ -90,17 +116,22 @@ const auth = (state = initialState, action) => {
                 ...state,
                 user: action.user,
                 isAuthenticated: true,
-                authErrCode: initialState.authErrCode
+                authErrCode: initialState.authErrCode,
+                loading: false
             };
         case "LOGOUT":
-            return initialState;
+            return {
+                ...initialState,
+                loading: false
+            };
         case "AUTH_ERROR":
             return {
                 ...state,
                 authErrCode: {
                     ...state.authErrCode,
                     [action.key]: action.errCode
-                }
+                },
+                loading: false
             };
         default:
             return state

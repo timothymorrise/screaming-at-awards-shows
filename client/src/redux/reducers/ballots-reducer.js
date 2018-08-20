@@ -24,10 +24,10 @@ ballotsAxios.interceptors.request.use(((config) => {
 /////////////////////
 
 // GET BALLOTS
-export const getBallots = (awardId, user) => {
+export const getBallots = (awardId) => {
     return dispatch => {
         dispatch({ type: "RESET_LOADING_BALLOTS" })
-        ballotsAxios.get(getBallotsUrl + awardId, user)
+        ballotsAxios.get(getBallotsUrl + awardId)
             .then(response => {
                 dispatch(
                     {
@@ -43,10 +43,10 @@ export const getBallots = (awardId, user) => {
 }
 
 // GET BALLOT
-export const getBallot = (categoryId, user) => {
+export const getBallot = (categoryId) => {
     return dispatch => {
         dispatch({ type: "RESET_LOADING_BALLOT" });
-        ballotsAxios.get(getBallotUrl + categoryId, user)
+        ballotsAxios.get(getBallotUrl + categoryId)
             .then(response => {
                 let data = response.data[0]
                 if (data === undefined) {
@@ -85,9 +85,11 @@ export const postBallot = (ballot) => {
 
 // PUT BALLOT
 export const updateBallot = (ballot, id) => {
+    console.log("update ballot called")
     return dispatch => {
         ballotsAxios.put(ballotsUrl + id, ballot)
             .then((response) => {
+                console.log("dirty shit")
                 dispatch({
                     type: "UPDATE_BALLOT",
                     payload: response.data,

@@ -7,12 +7,14 @@ import { connect } from "react-redux";
 
 // IMPORT FROM FILES -- ACTION CREATOR / COMPONENTS / CSS
 import { getCategories } from "../../redux/reducers/categories-reducer"
-import FormDisplay from "./FormDisplay"
-import Form from "./Form"
+import BallotSelector from "./BallotSelector"
 import BallotDisplay from "./BallotDisplay"
+import { getNominees } from "../../redux/reducers/nominees-reducer"
+import { getBallots } from "../../redux/reducers/ballots-reducer"
+
 import "./BallotScreamerMaker.css"
 
-class BallotScreamer extends Component {
+class BallotWrapper extends Component {
     constructor(props) {
         super(props);
         this.lateralMove = this.lateralMove.bind(this);
@@ -20,7 +22,10 @@ class BallotScreamer extends Component {
 
     componentDidMount() {
         let { award_id } = this.props.match.params
+        let { user } = this.props
         this.props.getCategories(award_id)
+        this.props.getNominees();
+        this.props.getBallots(award_id, user);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -42,27 +47,25 @@ class BallotScreamer extends Component {
 
     render() {
         let { award_id, category_num } = this.props.match.params
-        let { categoryLoading, categories } = this.props
+        let { categoryLoading,
+            categories,
+            nomineeLoading } = this.props
         let category = categories.filter(category => {
-            let { order_number } = category
-            if (category_num === order_number) return category
+            if (category_num === category.order_number) return category
         })[0]
         return (
-            categoryLoading ?
+            categoryLoading || nomineeLoading ?
                 <div>
                     LOADING...
                 </div>
                 :
                 <div className="ballot-screamer">
-                    <h1>{category.award_name}</h1>
-                    <div className="ballot-screamer-form-wrapper">
-                        <FormDisplay categoryId={category._id} categoryNum={category_num} lateralMove={this.lateralMove} />
-                        <br />
-                        <Form categoryId={category._id} awardId={award_id} lateralMove={this.lateralMove}/>
-                    </div>
-                    <div>
-            
-                    </div>
+                    <BallotSelector
+                        category={category}
+                        category_num={category_num}
+                        lateralMove={this.lateralMove}
+                        award_id={award_id}
+                        />
                     <BallotDisplay awardId={award_id} />
                 </div>
         )
@@ -73,8 +76,9 @@ class BallotScreamer extends Component {
 const mapStateToProps = (state) => {
     return {
         categories: state.categories.data,
-        categoryLoading: state.categories.loading
+        categoryLoading: state.categories.loading,
+        nomineeLoading: state.nominees.nomineeLoading
     }
 }
 
-export default connect(mapStateToProps, { getCategories })(BallotScreamer)
+export default connect(mapStateToProps, { getCategories, getNominees, getBallots })(BallotWrapper)
