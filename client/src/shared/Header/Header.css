@@ -3,8 +3,7 @@
 
 header {
     align-items: center;
-    background-image: url(http://www.powerpointhintergrund.com/uploads/shiny-gold-background-photo-29.jpeg);
-    display: flex;
+    background-color: #eeeeee;
     flex-direction: column;
     width: 100vw;
 }

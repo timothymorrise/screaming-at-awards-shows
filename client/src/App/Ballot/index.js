@@ -1,4 +1,4 @@
-// BALLOT SCREAMER -- COMPONENT
+// BALLOT -- COMPONENT
 // ==============================
 
 // IMPORT FROM PACKAGES
@@ -22,16 +22,16 @@ class BallotWrapper extends Component {
 
     componentDidMount() {
         let { award_id } = this.props.match.params
-        let { user } = this.props
         this.props.getCategories(award_id)
         this.props.getNominees();
-        this.props.getBallots(award_id, user);
+        this.props.getBallots(award_id);
     }
 
     componentWillReceiveProps(nextProps) {
         let { award_id } = this.props.match.params
         let nextId = nextProps.match.params.award_id
         if (award_id !== nextId) {
+            this.props.getBallots(nextId)
             this.props.getCategories(nextId);
         }
     }

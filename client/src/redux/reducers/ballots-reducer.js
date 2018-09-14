@@ -25,6 +25,7 @@ ballotsAxios.interceptors.request.use(((config) => {
 
 // GET BALLOTS
 export const getBallots = (awardId) => {
+    console.log("getting ballots")
     return dispatch => {
         dispatch({ type: "RESET_LOADING_BALLOTS" })
         ballotsAxios.get(getBallotsUrl + awardId)

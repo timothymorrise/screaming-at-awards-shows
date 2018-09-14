@@ -9,7 +9,7 @@
 }
 
 .form-display-container {
-    background-color: silver;
+    background-color: #eee;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -19,13 +19,19 @@
 }
 
 .form-display > button {
+    border: silver solid 1px;
     border-radius: 25px;
-    background-color: silver;
+    background-color: #eee;
     font-size: 2em;
     margin-left: 10px;
     margin-right: 10px; 
     height: 100px;
     width: 100px;
+}
+
+.form-display > button:hover {
+    color: #b7a261;
+    cursor: pointer;
 }
 
 .pseudo-button {

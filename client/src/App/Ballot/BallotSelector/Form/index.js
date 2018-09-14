@@ -25,9 +25,14 @@ class Form extends Component {
     }
 
     componentDidMount() {
-        let { categoryId, user } = this.props
+        let { categoryId } = this.props
         this.props.getSomeNominees(categoryId)
-        this.props.getBallot(categoryId, user)
+        this.props.getBallot(categoryId )
+        this.setState(
+            {
+                
+            }
+        )
     }
 
     componentWillReceiveProps(nextProps) {
@@ -35,22 +40,23 @@ class Form extends Component {
         let nextId = nextProps.categoryId
         if (categoryId !== nextId) {
             this.props.getSomeNominees(nextId);
-            this.props.getBallot(nextId)
+            this.props.getBallot(nextId)  
         }
-        if (this.props.ballot !== null) {
-            console.log("pulling from props")
+        let nextBallot = nextProps.ballot
+        if (nextProps.ballot !== null) {
             this.setState(
                 {
-                    predicted: this.props.ballot.predicted,
-                    favorite: this.props.ballot.favorite,
-                    screamingAt: this.props.ballot.screamingAt
+                    predicted: nextBallot.predicted,
+                    favorite: nextBallot.favorite,
+                    screamingAt: nextBallot.screamingAt
                 }
             )
-        }
+        } 
+
+          
     }
 
     handleChange(e) {
-
         let { value, name } = e.target
         this.setState(prevState => {
             return {
@@ -97,7 +103,6 @@ class Form extends Component {
                     checked={this.state[questionValue] === _id} />
             </div>
         })
-        console.log(this.props.ballot)
         return (
             loading ?
             <div></div>

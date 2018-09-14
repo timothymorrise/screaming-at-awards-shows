@@ -2,7 +2,7 @@
 /* ============================== */
 
 aside {
-    background-color: black;
+    background-color: #eeeeee;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,15 +10,14 @@ aside {
 }
 
 aside > a {
-    color: white;
+    color: black;
     margin-left: 15px;
     text-decoration: none;
     width: 250px;
 }
 
 aside > a:hover {
-    color: gold;
-    text-shadow: 1px 1px white;
+    color: #b7a261;
 }
 
 @media (min-width: 700px) {

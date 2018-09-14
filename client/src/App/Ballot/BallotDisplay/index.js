@@ -11,15 +11,6 @@ import getBallots from "../../../redux/reducers/ballots-reducer";
 
 class BallotDisplay extends Component {
 
-    componentWillReceiveProps(nextProps) {
-        let { awardId, user } = this.props;
-        let nextId = nextProps.awardId;
-        if (awardId !== nextId) {
-            console.log(nextId, user)
-            this.props.getBallots(nextId, user);
-        }
-    }
-
     render() {
         let { awards, 
             awardId, 
@@ -30,7 +21,7 @@ class BallotDisplay extends Component {
             nomineeSomeLoading,
             nomineeLoading,
             ballots,
-            ballotLoading } = this.props;
+            ballotsLoading } = this.props;
         let title = () => {
             let award = awards.filter(award => {
                 return (award._id === awardId)
@@ -73,8 +64,10 @@ class BallotDisplay extends Component {
             })
         }
         return (
-            ( ballotLoading || nomineeSomeLoading || awardsLoading ) ?
-            <div></div>
+            ( ballotsLoading || nomineeLoading || categoryLoading || nomineeSomeLoading || awardsLoading ) ?
+            <div>
+                LOADING...
+            </div>
             :
             
             <div className="ballot-display">
@@ -97,9 +90,9 @@ const mapStateToProps = (state) => {
         nomineeSomeLoading: state.nominees.someLoading,
         nomineeLoading: state.nominees.loading,
         ballots: state.ballots.data,
-        ballotLoading: state.ballots.loadingMany, 
+        ballotsLoading: state.ballots.loadingMany, 
         user: state.auth.user
     }
 }
 
-export default connect(mapStateToProps, {getBallots})(BallotDisplay);
+export default connect(mapStateToProps, { getBallots })(BallotDisplay);

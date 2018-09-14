@@ -57,7 +57,6 @@ export const login = credentials => {
 
 export const verify = () => {
     return dispatch => {
-        console.log("is verifying")
         profileAxios.get("/api/profile")
         .then(response => {
             let { user } = response.data;
