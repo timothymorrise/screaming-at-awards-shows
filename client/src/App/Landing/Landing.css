@@ -1,0 +1,18 @@
+/* LANDING -- CSS */
+/* ============================== */
+
+
+.landing-wrapper {
+    margin-bottom: 40vh;
+}
+
+.landing-wrapper > a {
+    color: #2a2a2a;
+    font-weight: bold;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.landing-wrapper > a:hover {
+    color: #b7a261;
+}

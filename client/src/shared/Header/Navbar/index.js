@@ -20,15 +20,15 @@ class Navbar extends Component {
     render() {
         const { isAuthenticated } = this.props
         return (
-            <div className="navbar-wrapper">
-                <nav>
+            <nav >
+                <div className="links-wrapper">
                     {!isAuthenticated && <div className="nav-link"><Link to="/">Sign Up</Link></div>}
                     {!isAuthenticated && <div className="nav-link"><Link to="/login">Log In</Link></div>}
                     {isAuthenticated && <div className="nav-link"><Link to="/home">Home</Link></div>}
                     <div className="nav-link"><Link to="/about">About</Link></div>
                     {isAuthenticated && <div className="nav-link"><button onClick={this.props.logout}> Logout </button></div>}
-                </nav>
-            </div>
+                </div>
+            </nav>
         )
     }
 }

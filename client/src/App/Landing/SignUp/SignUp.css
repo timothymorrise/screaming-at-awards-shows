@@ -1,0 +1,29 @@
+/* SIGN UP -- CSS */
+/* ============================== */
+
+.auth-form-wrapper > form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.auth-button {
+    color: black;
+    font-size: 1em;
+    height: 50px;
+}
+
+.auth-input {
+    font-size: 1em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.auth-button:hover {
+    color: #b7a261;
+    cursor: pointer;
+}
+
+.login {
+    margin-bottom: 45vh;
+}

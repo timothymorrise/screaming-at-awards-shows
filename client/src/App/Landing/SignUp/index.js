@@ -6,7 +6,8 @@ import React, { Component } from "react"
 import { connect } from "react-redux";
 
 
-// IMPORT FROM FILES
+// IMPORT FROM FILES -- CSS, COMPONENTS
+import "./SignUp.css"
 import SignupForm from "./SignUpForm"
 import { signup } from "../../../redux/reducers/auth-reducer"
 

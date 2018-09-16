@@ -17,47 +17,49 @@ import Sidebar from "../shared/Sidebar";
 import Footer from "../shared/Footer";
 import BallotWrapper from "./Ballot";
 import ProtectedRoute from "../shared/ProtectedRoute"
+import InvalidUrl from "./InvalidURL"
 import "./App.css";
 
 // CONSTRUCTOR
 class App extends Component {
-    
+
     componentDidMount() {
         this.props.verify();
     }
-    
+
     render() {
         const { isAuthenticated, loading } = this.props
         const generateSidebar = () => {
             if (isAuthenticated) {
-                return <Sidebar/>
+                return <Sidebar />
             }
             return null
-        } 
+        }
         return (
             <div>
                 <Header />
-                {loading ? 
-                <div>Loading data</div>
-                :
-                <main>
-                    {generateSidebar()}
-                    <div>
-                        <Switch >
-                        <Route exact path="/" render={ props => isAuthenticated ? 
-                        <Redirect to="/home"/> :
-                        <Landing {...props}/>
-                    }/>
-                    <Route path="/login" render={ props => isAuthenticated ?
-                        <Redirect to="/home"/> :
-                        <Login {...props}/>
-                    } />
-                            <Route path="/about" component={About} />
-                            <ProtectedRoute path="/home" component={Home} />
-                            <ProtectedRoute path="/awards/:award_id/:category_num" component={BallotWrapper} />
-                        </Switch>
-                    </div>
-                </main>}
+                {loading ?
+                    <div>Loading data</div>
+                    :
+                    <main>
+                        {generateSidebar()}
+                        <div>
+                            <Switch >
+                                <Route exact path="/" render={props => isAuthenticated ?
+                                    <Redirect to="/home" /> :
+                                    <Landing {...props} />
+                                } />
+                                <Route path="/login" render={props => isAuthenticated ?
+                                    <Redirect to="/home" /> :
+                                    <Login {...props} />
+                                } />
+                                <Route path="/about" component={About} />
+                                <ProtectedRoute path="/home" component={Home} />
+                                <ProtectedRoute path="/awards/:award_id/:category_num" component={BallotWrapper} />
+                                <Route path="*" component={InvalidUrl} />
+                            </Switch>
+                        </div>
+                    </main>}
                 <Footer />
             </div>
         )
@@ -71,7 +73,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, {verify})(App))
+export default withRouter(connect(mapStateToProps, { verify })(App))
 
 // GRAVY
 // restructure data to include award ids on nominees
