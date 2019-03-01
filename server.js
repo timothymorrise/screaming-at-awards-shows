@@ -17,9 +17,14 @@ const publicRouter = require("./routes/public/index.js");
 const ballotRouter = require("./routes/ballot-route.js");
 const profileRouter = require("./routes/profile-route");
 
+// OTHER IMPORTS
+const path = require("path");
+
+// PORT VARIABLE
+const port = process.env.PORT || 8080
 
 // CONNECT TO DATABASE
-mongoose.connect("mongodb://localhost:27017/screaming-at-award-shows", (err) => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/screaming-at-award-shows", (err) => {
     if (err) throw err;
     console.log("Connected to MongoDB");
 })
@@ -32,17 +37,14 @@ app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
 app.use("/api/profile", profileRouter)
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 // LISTENING ON PORT
-app.listen(8080, () => {
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(port, () => {
     console.log("Listening on port 8080");
 })
 
-// MAP
-// ADMIN
-    
-// PUBLIC
-// BALLOTS
-
-// TODO
-// set up port and local environment settings

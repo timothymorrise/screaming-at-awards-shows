@@ -24,7 +24,6 @@ aside > a:hover {
     aside {
         align-items: flex-start;
         display: flex;
-        min-height: 1000px;
         width: 300px;
     }
 }
