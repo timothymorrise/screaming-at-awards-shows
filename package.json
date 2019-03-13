@@ -1,0 +1,36 @@
+{
+  "name": "screaming-at-awards-shows",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-jwt": "^5.3.1",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.3",
+    "nodemon": "^1.14.12",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "uuid": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timothymorrise/screaming-at-awards-shows.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timothymorrise/screaming-at-awards-shows/issues"
+  },
+  "homepage": "https://github.com/timothymorrise/screaming-at-awards-shows#readme"
+}
