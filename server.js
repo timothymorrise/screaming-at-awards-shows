@@ -6,7 +6,6 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const bodyParser = require("express")
-const uuid = require("uuid")
 const mongoose = require("mongoose")
 const expressJwt = require("express-jwt");
 
@@ -37,12 +36,7 @@ app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
 app.use("/api/profile", profileRouter)
-app.use(express.static(path.join(__dirname, "client", "build")))
 
-// LISTENING ON PORT
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 app.listen(port, () => {
     console.log("Server live");
