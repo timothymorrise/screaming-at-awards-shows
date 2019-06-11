@@ -38,6 +38,14 @@ app.use("/api/ballots", ballotRouter)
 app.use("/api/profile", profileRouter)
 
 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// LISTENING ON PORT
+app.get("*", (req, res) => {
+    console.log("Test: Flag - pre path.join moment")
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 app.listen(port, () => {
     console.log("Server live");
 })
