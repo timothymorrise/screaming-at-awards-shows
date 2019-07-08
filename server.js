@@ -15,6 +15,7 @@ const adminRouter = require("./routes/admin/index.js");
 const publicRouter = require("./routes/public/index.js");
 const ballotRouter = require("./routes/ballot-route.js");
 const profileRouter = require("./routes/profile-route");
+const testRouter = require ("./routes/test-route");
 
 // OTHER IMPORTS
 const path = require("path");
@@ -36,6 +37,7 @@ app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
 app.use("/api/profile", profileRouter)
+app.use("/test", testRouter)
 
 
 app.use(express.static(path.join(__dirname, "client", "build")))

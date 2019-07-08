@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 // IMPORT FROM FILES -- MODELS
 const User = require("../models/user-model");
 
-// ROUTE METHODS
+// ROUTE AND METHODS
 const authRouter = express.Router();
 
 authRouter.post("/signup", (req, res) => {

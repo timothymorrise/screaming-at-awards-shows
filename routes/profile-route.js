@@ -11,7 +11,7 @@ const profileRoute = express.Router();
 
 const auth = expressJwt({ secret: process.env.SECRET });
 
-// ROUTE
+// ROUTE AND METHODS
 profileRoute.use(auth);
 
 profileRoute.get("/", (req, res) => {

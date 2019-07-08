@@ -7,7 +7,7 @@ const express = require("express")
 // IMPORT FROM FILES -- MODELS
 const ballotModel = require("../models/ballot-model")
 
-// ROUTE METHODS
+// ROUTE AND METHODS
 const ballotRouter = express.Router();
 
 ballotRouter.route("/")
