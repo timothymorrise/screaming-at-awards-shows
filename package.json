@@ -4,7 +4,7 @@
   "description": "designed to create personal ballots for current and former awards shows",
   "main": "server.js",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cryptiles": "^4.1.3",
     "dotenv": "^5.0.1",
@@ -37,5 +37,5 @@
   "homepage": "https://github.com/timothymorrise/screaming-at-awards-shows#readme",
   "engines": {
     "node": "8.9.1"
-}
+  }
 }

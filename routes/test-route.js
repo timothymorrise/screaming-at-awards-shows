@@ -11,3 +11,6 @@ testRouter.get('/', (req, res) => {
     res.send("Hello world!");
 });
 
+// EXPORT MODULE
+module.exports = testRouter 
+
