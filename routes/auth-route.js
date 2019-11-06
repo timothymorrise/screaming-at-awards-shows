@@ -37,8 +37,10 @@ authRouter.post("/signup", (req, res) => {
 // authRouter.use(passport.initialize);
 
 authRouter.post("/login", (req, res) => {
+    console.log("login attempt from" + req.body.username)
     // find username
     User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
+    
         if (err) return res.status(500).send(err);
         // upon no return
         if (!user) {

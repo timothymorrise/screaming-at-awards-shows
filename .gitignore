@@ -17,3 +17,6 @@
 *.orig
 .idea/
 .vscode/
+
+#database
+/db-backup

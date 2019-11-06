@@ -21,7 +21,7 @@ const testRouter = require ("./routes/test-route");
 const path = require("path");
 
 // PORT VARIABLE
-const port = process.env.PORT || 8070
+const port = process.env.PORT || 8080
 
 // CONNECT TO DATABASE
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/screaming-at-award-shows", (err) => {
@@ -40,7 +40,7 @@ app.use("/public", publicRouter)
 app.use("/auth", authRouter)
 app.use("/api/ballots", ballotRouter)
 app.use("/api/profile", profileRouter)
-app.use("/api/test", testRouter)
+app.use("/test", testRouter)
 
 
 app.use(express.static(path.join(__dirname, "client", "build")))
