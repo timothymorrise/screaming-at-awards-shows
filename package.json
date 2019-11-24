@@ -36,6 +36,6 @@
   },
   "homepage": "https://github.com/timothymorrise/screaming-at-awards-shows#readme",
   "engines": {
-    "node": "8.9.1"
+    "node": "10.16.3"
   }
 }
