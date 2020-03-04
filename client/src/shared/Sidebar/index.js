@@ -21,12 +21,15 @@ class Sidebar extends Component {
     render() {
         let { awards } = this.props
         let generateLinks = () => {
-            return awards.map((award, index) => {
+            console.log(awards)
+            return awards.sort((a,b)=>a.awards_show_name.localeCompare(b.awards_show_name)) // alphabatizes array
+            .map((award, index) => { // generates an array of Link components
                 let { awards_show_name, 
                     awards_show_year,
                     _id  } = award
                 return <Link key={index} to={`/awards/${_id}/1`} >{awards_show_name} &mdash; {awards_show_year}</Link>
             })
+
         }
 
         return (

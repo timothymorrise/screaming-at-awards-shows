@@ -24,7 +24,9 @@ const path = require("path");
 const port = process.env.PORT || 8080
 
 // CONNECT TO DATABASE
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/screaming-at-award-shows", (err) => {
+mongoose.connect(
+    //process.env.MONGODB_URI || 
+    "mongodb://localhost:27017/screaming-at-award-shows", (err) => {
     if (err) {
         console.log("Encountered Error in Mongo connect")
         throw err;

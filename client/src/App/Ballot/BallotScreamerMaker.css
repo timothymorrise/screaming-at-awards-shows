@@ -4,6 +4,7 @@
 .ballot-screamer-form-wrapper {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .ballot-screamer > h1 {

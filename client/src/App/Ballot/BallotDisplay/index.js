@@ -32,7 +32,7 @@ class BallotDisplay extends Component {
         }
         let votes = () => {
     
-            ballots.sort((ballot1, ballot2) => {
+            return ballots.sort((ballot1, ballot2) => {
                 let order1 = categories.filter(category => {
                     return (category._id === ballot1.category_id)
                 })[0].order_number
@@ -40,8 +40,8 @@ class BallotDisplay extends Component {
                     return (category._id === ballot2.category_id)
                 })[0].order_number
                 return (order1 - order2)
-            });
-            return ballots.map((ballot) => {
+            })
+            .map((ballot) => {
                 let categoryTitle = categories.filter(category => {
                     return (category._id === ballot.category_id)
                 })[0].award_name

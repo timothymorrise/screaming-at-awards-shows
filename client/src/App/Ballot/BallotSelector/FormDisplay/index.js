@@ -30,6 +30,8 @@ class FormDisplay extends Component {
 
     render() {
         let { categoryNum, categories, nominees, nomineeLoading } = this.props
+        console.log(nominees)
+        nominees.sort((a,b)=>(a.film_name.localeCompare(b.film_name)))
         const generateDisplayCards = nominees.map((nominee, index) =>
             <DisplayCard {...nominee} key={index} />
         )

@@ -86,7 +86,9 @@ class Form extends Component {
 
     render() {
         let { nominees, loading } = this.props
-        const titles = nominees.map((nominee, index) => {
+        const titles = nominees.sort((a,b)=> a.film_name.localeCompare(b.film_name)
+        )
+        .map((nominee, index) => {
             let { film_name, recipient } = nominee
             return <div key={index} className="form-title">
                 <h4>{film_name}</h4>
@@ -121,7 +123,7 @@ class Form extends Component {
                         {generateInputs("favorite")}
                     </div>
                     <div>
-                        <h2 className="form-question-title">Yelling At: </h2>
+                        <h2 className="form-question-title">Screaming At: </h2>
                         {generateInputs("screamingAt")}
                     </div>
                     <button>VOTE</button>
