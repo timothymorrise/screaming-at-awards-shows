@@ -67,20 +67,26 @@ class Form extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        let ballot = {
-            awards_id: this.props.awardId,
-            category_id: this.props.categoryId,
-            predicted: this.state.predicted,
-            favorite: this.state.favorite,
-            screamingAt: this.state.screamingAt
-        }
-        if (this.props.ballot !== null) {
-            let { _id } = this.props.ballot
-            this.props.updateBallot(ballot, _id)
+        if (this.state.predicted && this.state.favorite && this.state.screamingAt) {
+            e.preventDefault();
+            let ballot = {
+                awards_id: this.props.awardId,
+                category_id: this.props.categoryId,
+                predicted: this.state.predicted,
+                favorite: this.state.favorite,
+                screamingAt: this.state.screamingAt
+            }
+            if (this.props.ballot !== null) {
+                let { _id } = this.props.ballot
+                this.props.updateBallot(ballot, _id)
+            } else {
+                this.props.postBallot(ballot)
+            }
         } else {
-            this.props.postBallot(ballot)
+            e.preventDefault()
+            alert("Please fill out ballot completely before clicking VOTE")
         }
+        
         
     }
 

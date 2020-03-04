@@ -19,4 +19,4 @@
 .vscode/
 
 #database
-/db-backup
+/db_backup

@@ -39,14 +39,14 @@ class FormDisplay extends Component {
             if (Number(categoryNum) === 1) {
                 return <div className="pseudo-button"></div>
             } else {
-                return <button onClick={this.props.lateralMove} name="backward">	&larr;</button>
+                return <button onClick={this.props.lateralMove} className="noSelect" name="backward">	&larr;</button>
             }
         }
         const forwardButton = () => {
             if (Number(categoryNum) === (categories.length)) {
                 return <div className="pseudo-button"> </div>
             } else {
-                return <button onClick={this.props.lateralMove} name="forward">&rarr;</button>
+                return <button onClick={this.props.lateralMove} className="noSelect" name="forward">&rarr;</button>
             }
         }
         

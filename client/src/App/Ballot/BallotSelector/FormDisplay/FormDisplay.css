@@ -27,6 +27,7 @@
     margin-right: 10px; 
     height: 100px;
     width: 100px;
+    outline: none;
 }
 
 .form-display > button:hover {
@@ -38,4 +39,8 @@
     clear: both;
     height: 100px;
     width: 100px;
+}
+
+.noSelect {
+    
 }

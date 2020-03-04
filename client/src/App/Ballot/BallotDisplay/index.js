@@ -31,7 +31,7 @@ class BallotDisplay extends Component {
             </div>
         }
         let votes = () => {
-    
+            console.log(ballots)
             return ballots.sort((ballot1, ballot2) => {
                 let order1 = categories.filter(category => {
                     return (category._id === ballot1.category_id)

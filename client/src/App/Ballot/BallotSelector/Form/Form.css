@@ -18,6 +18,7 @@ form > button {
     font-size: 3em;
     height: 70px;
     width: 400px;
+    outline: none;
 }
 
 .form-wrapper {
