@@ -27,10 +27,10 @@ class Form extends Component {
     componentDidMount() {
         let { categoryId } = this.props
         this.props.getSomeNominees(categoryId)
-        this.props.getBallot(categoryId )
+        this.props.getBallot(categoryId)
         this.setState(
             {
-                
+
             }
         )
     }
@@ -40,7 +40,7 @@ class Form extends Component {
         let nextId = nextProps.categoryId
         if (categoryId !== nextId) {
             this.props.getSomeNominees(nextId);
-            this.props.getBallot(nextId)  
+            this.props.getBallot(nextId)
         }
         let nextBallot = nextProps.ballot
         if (nextProps.ballot !== null) {
@@ -51,9 +51,17 @@ class Form extends Component {
                     screamingAt: nextBallot.screamingAt
                 }
             )
-        } 
+        } else if (nextProps.ballot == null) {
+            this.setState(
+                {
+                    predicted: "",
+                    favorite: "",
+                    screamingAt: ""
+                }
+            )
+        }
 
-          
+
     }
 
     handleChange(e) {
@@ -90,15 +98,15 @@ class Form extends Component {
 
     render() {
         let { nominees, loading } = this.props
-        const titles = nominees.sort((a,b)=> a.film_name.localeCompare(b.film_name)
+        const titles = nominees.sort((a, b) => a.film_name.localeCompare(b.film_name)
         )
-        .map((nominee, index) => {
-            let { film_name, recipient } = nominee
-            return <div key={index} className="form-title">
-                <h4>{film_name}</h4>
-                <h6>{recipient}</h6>
-            </div>
-        })
+            .map((nominee, index) => {
+                let { film_name, recipient } = nominee
+                return <div key={index} className="form-title">
+                    <h4>{film_name}</h4>
+                    <h6>{recipient}</h6>
+                </div>
+            })
         const generateInputs = (questionValue) => nominees.map((nominee, index) => {
             let { _id, film_name, recipient } = nominee
             return <div key={index} className="form-radio">
@@ -111,28 +119,28 @@ class Form extends Component {
         })
         return (
             loading ?
-            <div></div>
-            :
-            <div className="form-wrapper">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-title-wrapper">
-                        {titles}
-                    </div>
-                    <div>
-                        <h2 className="form-question-title">Predicted Winner: </h2>
-                        {generateInputs("predicted")}
-                    </div>
-                    <div>
-                        <h2 className="form-question-title">Favorite to Win: </h2>
-                        {generateInputs("favorite")}
-                    </div>
-                    <div>
-                        <h2 className="form-question-title">Yelling At: </h2>
-                        {generateInputs("screamingAt")}
-                    </div>
-                    <button>VOTE</button>
-                </form>
-            </div>
+                <div></div>
+                :
+                <div className="form-wrapper">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="form-title-wrapper">
+                            {titles}
+                        </div>
+                        <div>
+                            <h2 className="form-question-title">Predicted Winner: </h2>
+                            {generateInputs("predicted")}
+                        </div>
+                        <div>
+                            <h2 className="form-question-title">Favorite to Win: </h2>
+                            {generateInputs("favorite")}
+                        </div>
+                        <div>
+                            <h2 className="form-question-title">Yelling At: </h2>
+                            {generateInputs("screamingAt")}
+                        </div>
+                        <button>VOTE</button>
+                    </form>
+                </div>
         )
     }
 }
@@ -147,4 +155,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getSomeNominees, getBallot, postBallot, updateBallot })(Form)
+export default connect(mapStateToProps, {
+    getSomeNominees,
+    getBallot,
+    postBallot,
+    updateBallot
+})(Form)

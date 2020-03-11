@@ -12,6 +12,7 @@ const noimneeModel = require("../../models/nominee-model");
 // ROUTES
 const awardsRouter = express.Router();
 awardsRouter.get("/", (req, res) => {
+    console.log(req.query)
     awardModel.find(req.query, (err, foundAwards) => {
         if (err) {
             console.error(err);
@@ -36,6 +37,7 @@ awardsRouter.route("/:id")
     })
 
 awardsRouter.get("/get-all", (req, res) => {
+    console.log("get all request")
     let awardDocuments = [];
     let categoryDocuments = [];
     let nomineeDocuments = [];

@@ -13,6 +13,7 @@ export const getAwards = () => {
         dispatch({type: "RESET_LOADING_AWARDS"})
         axios.get(awardsUrl)
         .then(response => {
+            console.log("resonse in redux", response.data)
             dispatch (
                 {
                     type: "GET_AWARDS",
